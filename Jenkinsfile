@@ -14,6 +14,22 @@ pipeline{
                 echo "========Priniting working directory========"
                 sh "pwd"
                 sh "tree ."
+                sh  "cd demo"
+                sh "mvn clean package -DskipTests=true"
+            }
+            post{
+                success{
+                    echo "========Initialization executed successfully========"
+                }
+                failure{
+                    echo "========Initialization execution failed========"
+                }
+            }
+        }
+          stage("Starting the app Stage"){
+            steps{
+                echo "========Starting the app stage========"
+                sh "tree ."
             }
             post{
                 success{
