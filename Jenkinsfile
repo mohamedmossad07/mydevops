@@ -1,14 +1,21 @@
 pipeline{
     agent any
+    tools {
+        maven "maven3"
+    }
     stages{
-        stage("Build"){
+        stage("Initialization Stage"){
             steps{
-                echo "========executing Build========"
+                echo "========Initialization stage========"
+                echo "========Make surring Maven exists========"
+                sh "mvn --version"
+                echo "========Getting project's source code from SCM========"
+                git branch: 'main', url: 'https://github.com/mohamedmossad07/mydevops.git'
+                echo "========Priniting working directory========"
+                sh "pwd"
+                sh "tree ."
             }
             post{
-                always{
-                    echo "========always========"
-                }
                 success{
                     echo "========Build executed successfully========"
                 }
