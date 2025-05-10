@@ -32,7 +32,7 @@ pipeline{
             steps{
                 echo "========Starting the app stage========"
                 sh """pwd
-                      cd demo
+                      cd demo/target/
                       java -jar demo*.jar
                     """
             }
