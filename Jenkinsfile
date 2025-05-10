@@ -15,6 +15,7 @@ pipeline{
                 sh "pwd"
                 sh "tree ."
                 sh  "cd demo"
+                sh "pwd"
                 sh "mvn clean package -DskipTests=true"
             }
             post{
