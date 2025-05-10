@@ -14,10 +14,11 @@ pipeline{
                 echo "========Priniting working directory========"
                 sh "pwd"
                 sh "tree ."
-                sh  """cd demo
-                        pwd
-                        mvn clean package -DskipTests=true
-                    """
+                script {
+                    cd demo
+                    pwd
+                    mvn clean package -DskipTests=true
+                    }
             }
             post{
                 success{
@@ -31,10 +32,11 @@ pipeline{
           stage("Starting the app Stage"){
             steps{
                 echo "========Starting the app stage========"
-                sh """pwd
-                      cd demo/target/
-                      java -jar demo*.jar
-                    """
+                script{
+                    pwd
+                    cd demo/target/
+                    java -jar demo*.jar
+                }
             }
             post{
                 success{
