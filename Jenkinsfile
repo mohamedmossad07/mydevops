@@ -14,11 +14,11 @@ pipeline{
                 echo "========Priniting working directory========"
                 sh "pwd"
                 sh "tree ."
-                script {
+                sh """
                     cd demo
                     pwd
                     mvn clean package -DskipTests=true
-                    }
+                    """
             }
             post{
                 success{
