@@ -32,11 +32,11 @@ pipeline{
           stage("Starting the app Stage"){
             steps{
                 echo "========Starting the app stage========"
-                script{
+                """
                     pwd
                     cd demo/target/
                     java -jar demo*.jar
-                }
+                """
             }
             post{
                 success{
